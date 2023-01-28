@@ -1,0 +1,6 @@
+fdisk -l
+fdisk -l | grep 'Disk /dev'
+or df -h
+or lsblk
+
+sudo fdisk /dev/sda //for partition

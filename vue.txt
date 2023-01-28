@@ -1,0 +1,71 @@
+ npm create vite@latest project
+ cd project
+ npm i vue-router@next
+ npm i -S vuex@next
+ 
+ ---------------------------------------------------------
+ import { createStore } from 'vuex'
+
+export default createStore({
+  state: {
+    test: "Test"
+  },
+  mutations: {
+
+  },
+  actions: {
+
+  },
+  getters: {
+
+  },
+  modules: {
+    
+  }
+})
+
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import './style.css'
+
+createApp(App).use(router).use(store).mount('#app')
+
+
+--------------------------------------------------------------------
+import { createWebHistory, createRouter } from "vue-router";
+
+import Home from "../views/Home.vue";
+import Products from "../views/Products.vue";
+import ProductDetails from "../views/products/_id.vue";
+import NotFound from "../views/NotFound.vue";
+
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+  },
+  {
+    path: "/products",
+    name: "Products",
+    component: Products,
+  },
+  {
+    path: "/products/:id",
+    name: "ProductDetails",
+    component: ProductDetails
+  },
+  {
+    path: "/:catchAll(.*)",
+    component: NotFound,
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
+
+export default router;

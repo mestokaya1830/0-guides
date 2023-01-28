@@ -1,0 +1,17 @@
+sudo nano /etc/dhcp/dhclient.conf
+change this #prepend domain-name-servers 127.0.0.1;
+with this #prepend domain-name-servers 8.8.8.8, 8.8.4.4;
+
+then
+
+sudo nano /etc/resolv.conf
+remove this nameserver 192.168.1.1
+
+and add these
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+
+final
+chattr -a /etc/resolv.conf  //open to permanent changes
+chattr -i /etc/resolv.conf  //write to permanent changes
+chattr +i /etc/resolv.conf  //lock this file to not change from any reason

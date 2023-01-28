@@ -1,0 +1,25 @@
+//check ssh installed------------------------------------
+sudo apt list --installed | grep openssh-server
+sudo netstat -ltnp | grep node
+
+//install ssh
+sudo apt install openssh-server
+
+//check ssh status
+sudo service ssh status
+sudo service ssh start
+sudo service ssh stop
+
+//Allow SSH in Firewall------------------------------------
+sudo ufw allow port /tcp
+sudo ufw deny port /tcp
+sudo ufw reload
+sudo ufw status
+
+ping ip
+
+//host file
+sudo nano /etc/hosts
+
+//ssh connection
+sudo ssh username@ip or sudo ssh username@domainname

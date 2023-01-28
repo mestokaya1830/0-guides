@@ -1,0 +1,98 @@
+install mysql as root--------------------------------------------------------------
+sudo apt update
+sudo apt install mysql-server
+sudo mysql_secure_installation
+sudo systemctl restart mysql
+sudo mysql -u root -p
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '123';
+flush privileges;
+
+create private user------------------------------------------------------
+DROP USER 'username'@'host';
+SELECT User, Host FROM mysql.user;
+SHOW GRANTS FOR 'testuser'@'localhost';
+SELECT db, host, user FROM mysql.db;
+SELECT db, host, user FROM mysql.db WHERE db = 'db';
+SELECT * FROM mysql.db WHERE Db = 'db'\G;
+
+CREATE USER 'mesto'@'localhost' IDENTIFIED BY '123';
+GRANT ALL ON *.* TO 'mesto'@'localhost';//for all database
+GRANT ALL PRIVILEGES ON gasvet.* TO 'mesto'@'localhost';
+ALTER USER 'mesto'@'localhost' IDENTIFIED WITH mysql_native_password BY '123';
+GRANT SELECT, INSERT, DELETE ON testdb1.* TO testuser@'localhost';//spesific grant
+FLUSH PRIVILEGES;
+
+REVOKE ALL PRIVILEGES ON testdb.* FROM 'testuser'@'localhost';
+
+sudo yum install mysqltuner
+sudo mysqltuner
+-----------------------------------------------------------------------------
+mysqlcheck -u root -p --auto-repair --optimize --all-databases
+mysql -u root -p
+mysqldump -p db > db.sql --- backup
+mysql -u root -p db < db.sql --- restore
+
+SHOW DATABASES;
+-------------------------------------------------------------
+CREATE TABLE users (
+    ID int NOT NULL AUTO_INCREMENT,
+    name varchar(50) NOT NULL,
+    password varchar(255),
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    proccess int Null Default 0,
+    PRIMARY KEY (ID)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+drop table test;
+ALTER TABLE test ADD COLUMN phone VARCHAR(15) AFTER state;
+ALTER TABLE basketfixtures ENGINE = MyISAM;
+ALTER TABLE basketfixtures ROW_FORMAT=fixed;
+ALTER TABLE betsummaryALTER COLUMN woncount SET DEFAULT '0';
+
+------------------------------------------------------------------------
+
+sudo mysql -u root -p then below
+
+SHOW  PROCESSLIST\G
+SHOW COLLATION;
+SHOW COLLATION LIKE 'utf%';
+SHOW ERRORS\G
+SELECT @@error_count;
+SHOW WARNINGS\G;
+SELECT @@warning_count;
+SHOW GRANTS FOR 'root'@'localhost';
+SHOW PLUGINS\G
+SHOW PRIVILEGES\G
+SHOW VARIABLES LIKE 'time%';
+SHOW VARIABLES\G;
+SHOW VARIABLES LIKE 'innodb%';
+Select @@global.max_allowed_packet;
+SHOW STATUS LIKE "qcache%";
+SHOW STATUS LIKE "threads%";
+SHOW VARIABLES LIKE "max_connections";
+
+SHOW TABLES;
+DESCRIBE  users;
+
+Uninstall mysql--------------------------------------------------------------
+sudo apt-get remove --purge mysql-server mysql-client mysql-common -y
+sudo apt-get remove --purge *mysql\*
+sudo apt-get autoremove -y
+sudo apt-get autoclean
+sudo rm -r /etc/mysql
+sudo rm -r /var/lib/mysql
+sudo rm -r /var/lib/mysql-files
+sudo rm -r /var/lib/mysql-keyring
+
+some errors------------------------------------------------------------------
+systemctl unmask mysql.service
+systemctl status mysql.service
+sudo mysql_secure_installation
+sudo systemctl restart mysql
+
+restore cache when you delete all-------------------------------------------
+sudo mkdir -p /var/cache/apt/archives/partial
+sudo touch /var/cache/apt/archives/lock
+sudo chmod 640 /var/cache/apt/archives/lock
+
+

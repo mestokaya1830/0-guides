@@ -1,0 +1,29 @@
+database
+show databases;
+use works;
+db.dropDatabase;
+db.stats();
+
+-------------------------------------------
+//restore all db
+   mongorestore --verbose ./dump --authenticationDatabase admin --username 'user' --password 'password'
+   
+//restore only one db
+   mongorestore --db test1 ./dump/gasvet --drop --authenticationDatabase admin --username 'user' --password 'password'
+   
+//restore single collectio
+   mongorestore --db gasvet --collection users ./dump/gasvet --authenticationDatabase admin --username 'user' --password --drop
+  
+--------------------------------------------
+//backup all db need extra role
+  mongodump --verbose --out backupname --authenticationDatabase admin --username 'user' --password 'password'
+
+//backup single db
+  mongodump --db=gasvet --out backupname --authenticationDatabase admin --username 'user' --password 'password'
+  
+//backup collection
+  mongodump --db=gasvet --collection users --out usersdump -authenticationDatabase admin --username 'user' --password 'password'
+ 
+//backup exclude collection
+  mongodump --db=gasvet --excludeCollection=users --out excludeusersdump -authenticationDatabase admin --username 'user' --password 'password'
+

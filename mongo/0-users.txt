@@ -1,0 +1,68 @@
+create user and role-----------------------------------------------
+sudo nano /etc/mongod.conf
+security:
+  authorization: enabled
+  
+sudo systemctl restart mongod
+
+use admin
+//root role
+use db //root role is top of roles
+db.createUser(
+  {
+    user: 'mesto',
+    pwd:  '9090',
+    roles: [{role:"root", db:"admin"}]
+	
+  }
+)
+//super admin role
+db.createUser(
+  {
+    user: 'mesto',
+    pwd:  '9090',
+    roles: [ { role: "userAdminAnyDatabase", db: "admin" }, 'readWriteAnyDatabase'] 
+  }
+)
+-----------------------------------------------------------
+with extra user
+use db
+db.createUser(
+  {
+    user: 'betadmin',
+    pwd:  '9090',
+    roles: [{role:"readWrite", db:"bet"}]
+	
+  }
+)
+
+-----------------------------------------------------------
+update user change current role or add new role
+use db
+db.updateUser('crud',{
+    pwd: '123'
+	
+  }
+)
+db.updateUser('gasvet',{
+    roles: [
+    	{role:"readWrite", db:"bet"},
+    	{role:"readWrite", db:"crud"}
+    ]
+	
+  }
+)
+
+use db
+db.dropUser('user')
+---------------------------------------
+auth after connection
+sudo mongosh -u user -p
+use db
+db.auth('user','password')
+db.changeUserPassword('user','new password')
+
+test
+use db
+show users
+

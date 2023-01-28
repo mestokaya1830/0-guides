@@ -1,0 +1,37 @@
+//remove node nvm version
+nvm list
+nvm current
+nvm deactivate
+nvm uninstall v16.14.0
+
+or----------------------
+//remove node
+sudo apt-get remove nodejs
+sudo apt-get purge nodejs
+sudo apt-get autoremove
+---------------------------------------------
+//install nvm version
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh
+source ~/.bashrc
+nvm list-remote
+nvm install v17.0.0
+
+
+at last sudo apt-get install nodejs-y
+
+//errros----------------------------------------------------------------
+error:0308010C:digital envelope routines::unsupported
+solve=export NODE_OPTIONS=--openssl-legacy-provider
+
+ubuntu open-legacy-provider
+solve=unset NODE_OPTIONS
+
+npm------------------------------------------------------------
+//close all node proccess
+sudo pkill node
+
+//close specific proccess
+sudo lsof -i :3000
+sudo kill -9 pid
+
+sudo npm cache clean --force

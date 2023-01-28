@@ -1,0 +1,11 @@
+//install----------------------------------
+sud apt install node
+
+//remove-------------------------------------------
+sudo apt remove node
+
+//remove dependinses-------------------------------------------
+sudo apt autoremove
+
+//install local app
+sudo dpkg -i ./appname

@@ -1,0 +1,68 @@
+current user-------------------------------------------
+whoami
+
+show user list------------------------------------------
+sudo cat /etc/passwd
+sudo cat /etc/group
+
+//user config
+show user id--------------------------------------------
+sudo id or sudo id username 
+
+show user config in login file---------------------------
+sudo nano /etc/login.defs  
+
+change password----------------------------------------
+sudo passwd
+
+create user--------------------------------------------
+sudo adduser username
+sudo adduser user group //add user to exeisting group
+sudo usermod -a -G groupname username //change group for for existing user
+
+add password for createde new user---------------------
+sudo passwd username
+
+switch to user-------------------------------------
+su - username
+sudo -i //switch to root
+
+permission for new user--------------------------------
+show permission for current user------------------
+ll
+su root 
+nano /etc/sudoers then add below
+user_name ALL=(ALL)  ALL
+
+or simple way withouth adding to file like above
+sudo usermod -a -G sudo username
+
+special permission------------------------------
+sudo chmod -R 700 filename // 7 for file-owner 0 for group aother 0 is for user
+not read=4, write=2,exec=1 0=nothing
+
+change owner---------------------------------------
+chown name filename
+chown name directory
+
+change group of file and folder-------------------
+chgrp groupname filename
+chgrp groupname directory
+
+//change file owner----------------------------
+sudo chown ownername test.txt
+
+//change file group----------------------------
+sudo chgrp groupname test.txt
+
+//exec permission-----------------------------
+chmod u+x filename.sh //user
+chmod g+x filename.sh //group
+chmod o+x filename.sh //other
+
+delete user with proccess-------------------------------
+killall -TERM -u username
+userdel -f username
+sudo deluser user group //remove from group not from system
+
+

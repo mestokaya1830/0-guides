@@ -1,0 +1,18 @@
+file search---------------------------------------
+sudo find / -type f -name filename
+
+directory search---------------------------------
+sudo find / -type d -name directory
+
+string search------------------------------------
+grep 'string' filename
+grep -i 'string' filename //not case sensitive
+grep -i 'string' ./* //search everywhere
+grep -n -i 'date' ./* //search everywhere with line number
+
+
+search proccess----------------------------------------
+sudo pgrep mongod
+
+grap proccess with pid
+sudo netstat -nlpt | grep 3306

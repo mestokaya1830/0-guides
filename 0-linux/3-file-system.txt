@@ -1,0 +1,59 @@
+/bin contain executable files
+/etc contain system configration files
+/opt contain third party app files
+
+help----------------------------------------
+ls --help
+
+file and directory list-------------------------
+sudo ld -l or ls -al
+
+create directory--------------------------------
+mkdir name
+
+remove directory--------------------------------
+sudo rm -r name
+
+move directory----------------------------------
+sudo mv name path
+
+copy directory----------------------------------
+sudo cp name path
+
+FILES------------------------------------------
+crreate file--------------------------------
+touch name.txt
+
+remove file--------------------------------
+sudo rm -r name
+
+move file----------------------------------
+sudo mv name path
+
+copy file----------------------------------
+sudo cp name path
+
+rename-------------------------------------
+mv name newname
+
+show inside file----------------------------
+sudo cat filename
+
+size of directory--------------------------------
+du -sh name //size of directory
+
+example---------------------
+ls r ls -ls or ls -a r ls -s or ls -n
+mkdir test
+touch test.txt
+rm -r test
+rm test.txt
+mv test newpath
+cp test newpath
+cat test.txt
+head test.txt //start of file
+tail test.txt //end of file
+
+
+
+
