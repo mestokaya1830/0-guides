@@ -9,3 +9,6 @@ sudo apt autoremove
 
 //install local app
 sudo dpkg -i ./appname
+
+//video player error
+sudo apt remove gstreamer1.0-vaapi
